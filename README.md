@@ -13,6 +13,11 @@ This software is a Dapp that creates messages in the ethereum rinkeby network
 ## How to install?
 
 1. Download the project from this github repository
+
+2. Start ganache
+
+2. Deploy the contract to ganache using remix IDE
+
 2. Set the contract address
 
 ![contract address](https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger/blob/master/img/contract-address.png)
