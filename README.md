@@ -36,12 +36,20 @@ This software is a Dapp that creates messages in the ethereum rinkeby network
 
 2. Log in metamask
 3. Open the website in Chrome
-4. Write the message
+4. Connect metamask to website:
+![connect to metamask](https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger/blob/master/img/metamask-connection-1.png)
+
+![connect to metamask step 2](https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger/blob/master/img/metamask-connection-2.png)
+
+![connect to metamask step 3](https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger/blob/master/img/metamask-connection-3.png)
+
+
+5. Write the message
 
 ![dapp](https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger/blob/master/img/UI.png)
 
 
-5. Click on "set secret message"
+6. Click on "set secret message"
 
 ![confirm transaction](https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger/blob/master/img/confirm-transaction.png)
 
