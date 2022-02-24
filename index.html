@@ -22,6 +22,7 @@
         <input id="userInput" type="text">
 
         <button id="setMessageButton">Set secret message</button>
+        <button class="enableEthereumButton">Enable Ethereum</button>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -30,7 +31,7 @@
 
         // Connect a the web3 provider
         if (typeof web3 !== 'undefined') {
-            web3 = new Web3(web3.currentProvider);
+            web3 = new Web3(window.ethereum);
             console.log("meta!!!!!!")
         } else {
             web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
@@ -70,16 +71,25 @@
                         "stateMutability": "view",
                         "type": "function"
                     }
-                ], '0xE59be8Ef9D694E4C83D881784055FC8Ca625f2e9', {
-                    from: '0x5f0f037b77Ee98c9563Cb881fD91618E98Feefa2', // default from address
+                ], '0xeD445152BaE3BCd8FA8Aaf0fA5cE8e79CBCA4364', {
+                    from: '0x7Fd8AD419dbDe17cD6673c03Eb7D671cE125C955', // default from address
                     gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
                 }
             );
 
 
+
+
         $("#setMessageButton").click(function () {
             RemixContract.methods.setMessage($("#userInput").val()).send();
             console.log($("#userInput").val())
+        });
+
+        const ethereumButton = document.querySelector('.enableEthereumButton');
+
+        ethereumButton.addEventListener('click', () => {
+          //Will Start the metamask extension
+          ethereum.request({ method: 'eth_requestAccounts' });
         });
 
     </script>
