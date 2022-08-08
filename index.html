@@ -1,98 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Deploy a Remix Contract</title>
 
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="main.css" />
 
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div>
-        <h1>Ethereum Secret Messenger</h1>
-        <hr>
+      <h1>Ethereum Secret Messenger</h1>
+      <hr />
 
-        <label for="message">This site writes a secret message to the Ethereum
-            blockchain!</label>
-        <input id="userInput" type="text">
+      <label for="message">This site writes a secret message to the Ethereum blockchain!</label>
+      <input id="userInput" type="text" />
 
-        <button id="setMessageButton">Set secret message</button>
-        <button class="enableEthereumButton">Enable Ethereum</button>
+      <button id="setMessageButton">Set secret message</button>
+      <button class="enableEthereumButton">Enable Ethereum</button>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
     <script>
+      // Connect a the web3 provider
+      if (typeof web3 !== "undefined") {
+        web3 = new Web3(window.ethereum);
+        console.log("meta!!!!!!");
+      } else {
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+      }
 
-        // Connect a the web3 provider
-        if (typeof web3 !== 'undefined') {
-            web3 = new Web3(window.ethereum);
-            console.log("meta!!!!!!")
-        } else {
-            web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+      // Set a default account
+      web3.eth.defaultAccount = web3.eth.accounts[0];
+
+      // Get the contract address
+      var RemixContract = new web3.eth.Contract(
+        [
+          {
+            constant: false,
+            inputs: [
+              {
+                name: "x",
+                type: "string",
+              },
+            ],
+            name: "setMessage",
+            outputs: [],
+            payable: false,
+            stateMutability: "nonpayable",
+            type: "function",
+          },
+          {
+            constant: true,
+            inputs: [],
+            name: "getMessage",
+            outputs: [
+              {
+                name: "",
+                type: "string",
+              },
+            ],
+            payable: false,
+            stateMutability: "view",
+            type: "function",
+          },
+        ],
+        "0xeD445152BaE3BCd8FA8Aaf0fA5cE8e79CBCA4364",
+        {
+          gasPrice: "20000000000", // default gas price in wei, 20 gwei in this case
         }
+      );
 
-        // Set a default account
-        web3.eth.defaultAccount = web3.eth.accounts[0];
+      $("#setMessageButton").click(function () {
+        if (!web3.eth.defaultAccount) {
+          alert("Please click 'Enable Ethereum' button to connect your wallet");
+          return;
+        }
+        RemixContract.methods.setMessage($("#userInput").val()).send({ from: web3.eth.defaultAccount });
+        console.log($("#userInput").val());
+      });
 
-        // Get the contract address
-        var RemixContract = new web3.eth.Contract(
-                [
-                    {
-                        "constant": false,
-                        "inputs": [
-                            {
-                                "name": "x",
-                                "type": "string"
-                            }
-                        ],
-                        "name": "setMessage",
-                        "outputs": [],
-                        "payable": false,
-                        "stateMutability": "nonpayable",
-                        "type": "function"
-                    },
-                    {
-                        "constant": true,
-                        "inputs": [],
-                        "name": "getMessage",
-                        "outputs": [
-                            {
-                                "name": "",
-                                "type": "string"
-                            }
-                        ],
-                        "payable": false,
-                        "stateMutability": "view",
-                        "type": "function"
-                    }
-                ], '0xeD445152BaE3BCd8FA8Aaf0fA5cE8e79CBCA4364', {
-                    from: '0x7Fd8AD419dbDe17cD6673c03Eb7D671cE125C955', // default from address
-                    gasPrice: '20000000000' // default gas price in wei, 20 gwei in this case
-                }
-            );
+      const ethereumButton = document.querySelector(".enableEthereumButton");
 
-
-
-
-        $("#setMessageButton").click(function () {
-            RemixContract.methods.setMessage($("#userInput").val()).send();
-            console.log($("#userInput").val())
+      ethereumButton.addEventListener("click", () => {
+        //Will Start the metamask extension
+        ethereum.request({ method: "eth_requestAccounts" }).then((accounts) => {
+          //set the default account to the connected metamask wallet address
+          web3.eth.defaultAccount = accounts[0];
         });
-
-        const ethereumButton = document.querySelector('.enableEthereumButton');
-
-        ethereumButton.addEventListener('click', () => {
-          //Will Start the metamask extension
-          ethereum.request({ method: 'eth_requestAccounts' });
-        });
-
+      });
     </script>
-</body>
-
+  </body>
 </html>
