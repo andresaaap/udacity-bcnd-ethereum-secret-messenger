@@ -1,0 +1,26 @@
+{
+  "name": "udacity-bcnd-ethereum-secret-messenger",
+  "version": "1.0.0",
+  "description": "This software is a Dapp that creates messages in the ethereum network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger.git"
+  },
+  "keywords": [
+    "ethereum",
+    "solidity"
+  ],
+  "author": "andresaaap",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger/issues"
+  },
+  "homepage": "https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
