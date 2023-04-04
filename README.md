@@ -30,9 +30,7 @@ This software is a Dapp that creates messages in the ethereum rinkeby network
 
 ### How to run?
 
-1. Host the dapp locally with [webserver for chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb)
-
-![webserver for chrome](https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger/blob/master/img/webserver.png)
+1. Host the dapp locally with http-server. First, run `npm i`. Then, open the terminal and change directory to the project. Then, run this command to host the dapp `./node_modules/http-server/bin/http-server PATH_TO_YOUR_PROJECT`. Then, open in the browser http://127.0.0.1:8080
 
 2. Log in metamask
 3. Open the website in Chrome
@@ -79,9 +77,7 @@ This software is a Dapp that creates messages in the ethereum rinkeby network
 
 ### How to run?
 
-1. Host the dapp locally with [webserver for chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb)
-
-![webserver for chrome](https://github.com/andresaaap/udacity-bcnd-ethereum-secret-messenger/blob/master/img/webserver.png)
+1. Host the dapp locally with http-server. First, run `npm i`. Then, open the terminal and change directory to the project. Then, run this command to host the dapp `./node_modules/http-server/bin/http-server PATH_TO_YOUR_PROJECT`. Then, open in the browser http://127.0.0.1:8080
 
 2. Log in metamask
 3. Open the website in Chrome
